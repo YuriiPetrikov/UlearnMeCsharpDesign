@@ -54,13 +54,16 @@ namespace Inheritance.DataStructure
             if (!(obj is Category)) return 1;
             
             var other = (Category)obj;
-            
-            var nameComparison = string.Compare(Name, other.Name);
-            var typeComparison = Type.CompareTo(other.Type);
+
+            if (Name == null || other.Name == null)
+                return 0;
+
+            var nameComparison  = Name.CompareTo(other.Name);
+            var typeComparison  = Type.CompareTo(other.Type);
             var topicComparison = Topic.CompareTo(other.Topic);
             
-            if (nameComparison != 0) return nameComparison;
-            if (typeComparison != 0) return typeComparison;
+            if (nameComparison  != 0) return nameComparison;
+            if (typeComparison  != 0) return typeComparison;
             if (topicComparison != 0) return topicComparison;
             return 0;
         }
